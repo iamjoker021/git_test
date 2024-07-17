@@ -33,3 +33,7 @@
 .slides {
     align-self: end;
 }
+
+.error {
+    background-color: lightcoral;
+}

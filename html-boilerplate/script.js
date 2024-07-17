@@ -115,3 +115,107 @@ const imageCarousal = (() => {
 })()
 
 
+// Form Custom Validation
+const checkEmail = () => {
+    const email = document.querySelector('.custom-validation input[type="email"]');
+    const emailError = document.querySelector('.custom-validation span.email-error')
+
+    if (email.validity.valid) {
+        emailError.textContent = "";
+        email.classList.remove('error');
+        return true;
+    }
+    else {
+        emailError.textContent = "Enter valid email address";
+        email.classList.add('error');
+        return false;
+    }
+}
+
+const checkCountry = () => {
+    const country = document.querySelector('.custom-validation select[name="country"]');
+    const countryError = document.querySelector('.custom-validation span.country-error');
+
+    if(country.value) {
+        countryError.textContent = "";
+        countryError.classList.remove('error');
+        document.querySelector('.custom-validation input#zip-code').disabled = false;
+        return true;
+    }
+    else {
+        countryError.textContent = "Please choose a country";
+        countryError.classList.add('error');
+        document.querySelector('.custom-validation input#zip-code').disabled = true;
+        return false;
+    }
+}
+
+const checkPassword = () => {
+    const password = document.querySelector('.custom-validation input[type="password"]#password');
+    const passwordError = document.querySelector('.custom-validation span.password-error');
+
+    if (password.validity.tooShort) {
+        passwordError.textContent = "Password should be minimum 8 characters length";
+        password.classList.add('error');
+    }
+    else if(!new RegExp("[A-Z]", "").test(password.value)) {
+        passwordError.textContent = "Password should include Cap case";
+        password.classList.add('error');
+    }
+    else if(!new RegExp("[a-z]", "").test(password.value)) {
+        passwordError.textContent = "Password should include small case";
+        password.classList.add('error');
+    }
+    else if(!new RegExp("[@#$%^&*]", "").test(password.value)) {
+        passwordError.textContent = "Password should include Speacial Character";
+        password.classList.add('error');
+    }
+    else {
+        passwordError.textContent = "";
+        password.classList.remove('error');
+        return true;
+    }
+    return false;
+}
+
+const checkConfirmPassword = () => {
+    const password = document.querySelector('.custom-validation input[type="password"]#password');
+    const confirmPassword = document.querySelector('.custom-validation input[type="password"]#confirm-password');
+    const confirmPasswordError = document.querySelector('.custom-validation span.confirm-password-error');
+
+    if (password.value != confirmPassword.value) {
+        confirmPasswordError.textContent = 'Password and Confirm password should match';
+        confirmPassword.classList.add('error');
+        return false;
+    }
+    else {
+        confirmPasswordError.textContent = '';
+        confirmPassword.classList.remove('error');
+        return true;
+    }
+}
+
+document.querySelector('.custom-validation form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (checkEmail() && checkCountry() && checkPassword() && checkConfirmPassword() && e.target.checkValidity()) {
+        document.querySelector('.custom-validation span.success').textContent = 'Sucess, All OK'
+    }
+
+})
+
+document.querySelector('.custom-validation input[type="email"]').addEventListener('input', () => {
+    checkEmail();
+})
+
+document.querySelector('.custom-validation select[name="country"]').addEventListener('input', () => {
+    checkCountry();
+})
+
+document.querySelector('.custom-validation input[type="password"]#password').addEventListener('input', () => {
+    checkPassword();
+})
+
+document.querySelector('.custom-validation input[type="password"]#confirm-password').addEventListener('input', () => {
+    checkConfirmPassword();
+})

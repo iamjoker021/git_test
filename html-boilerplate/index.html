@@ -27,11 +27,39 @@
                 <!-- <button class="dot"></button> -->
             </div>
             <button class="next">&xrarr;</button>
-            <!-- <img src="https://media.istockphoto.com/id/1807779771/vector/abstract-dark-blue-vector-background.jpg?s=1024x1024&w=is&k=20&c=sIyE-H5uj2xOfrBZ-dPUNYJMbq8NWMJAtN2zf21b5jw=" alt="">
-            <img src="https://images.freeimages.com/image/previews/7c5/dark-abstract-background-design-5690815.jpg" alt="">
-            <img src="https://www.istockphoto.com/vector/abstract-science-technology-background-network-particle-illustration-3d-grid-surface-gm1197105402-341669217" alt="">
-            <img src="https://media.istockphoto.com/id/1277204170/vector/3d-abstract-digital-technology-background-futuristic-sci-fi-user-interface-concept-with.jpg?s=1024x1024&w=is&k=20&c=R9NtMfAnBOE-GbEk83rqzR6rLOheapMEOq3rhhlkcic=" alt="">
-             -->
+        </div>
+        <div class="custom-validation">
+            <form novalidate>
+                <label for="email">Email *</label>
+                <input type="email" name="email" id="email" required>
+                <span class="email-error"></span>
+                <fieldset>
+                    <label for="country">Country *</label>
+                    <select name="country" id="country">
+                        <option value="">Choose Country</option>
+                        <option value="ch">Switzerland</option>
+                        <option value="fr">France</option>
+                        <option value="de">Germany</option>
+                        <option value="nl">The Netherlands</option>
+                    </select>
+                    <span class="country-error"></span>
+                    <br>
+                    <label for="zip-code">ZIP</label>
+                    <input type="text" name="zip-code" id="zip-code" disabled>
+                    <span class="zip-code-error"></span>
+                </fieldset>
+                <fieldset>
+                    <label for="password">Password *</label>
+                    <input type="password" name="password" id="password" minlength="8" required>
+                    <span class="password-error"></span>
+                    <br>
+                    <label for="confirm-password">Confirm Password *</label>
+                    <input type="password" name="confirm-password" id="confirm-password" required>
+                    <span class="confirm-password-error"></span>
+                </fieldset>
+                <button type="submit">Press OK</button>
+                <span class="success"></span>
+            </form>
         </div>
     </body>
 </html>
